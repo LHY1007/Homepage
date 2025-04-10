@@ -35,8 +35,20 @@ redirect_from:
 </html>
 
 
+<button onclick="toggleDark()">🌙 切换暗色模式</button>
+<script>
+function toggleDark() {
+  document.body.classList.toggle('dark-mode');
+}
+</script>
+<style>
+.dark-mode {
+  background: #111;
+  color: #eee;
+}
+</style>
 
-<script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
 
 <!-- {% if site.google_scholar_stats_use_cdn %}
 {% assign gsDataBaseUrl = "https://cdn.jsdelivr.net/gh/" | append: site.repository | append: "@" %}
