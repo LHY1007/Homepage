@@ -15,13 +15,13 @@ redirect_from:
 </head>
 <body>
    <!-- Google Translate 插件容器 -->
-   <div id="google_translate_element" style="position: fixed; top: 70px; right: 20px; z-index: 9999;"></div>
+   <div id="google_translate_element" style="position: fixed; top: 40px; right: 20px; z-index: 9999;"></div>
 
    <script type="text/javascript">
       function googleTranslateElementInit() {
          new google.translate.TranslateElement({
             pageLanguage: 'zh-CN', // 设置当前页面语言为简体中文
-            includedLanguages: 'zh-CN,zh-TW,en,fr,de,es,ja,ko', // 可翻译的目标语言
+            includedLanguages: 'zh-CN,zh-TW,en,fr,es,ja,ko,de,ar,pt,ru,it,nl,sv,tr,hi,th,id,pl,cs,el', // 按所需语言顺序排列
             layout: google.translate.TranslateElement.InlineLayout.HORIZONTAL, // 横向按钮布局
             autoDisplay: false
          }, 'google_translate_element');
@@ -32,6 +32,7 @@ redirect_from:
    <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 </body>
 </html>
+
 
 
 <!-- {% if site.google_scholar_stats_use_cdn %}
