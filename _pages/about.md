@@ -8,17 +8,26 @@ redirect_from:
   - /about.html
 ---
 
-<div id="google_translate_element" style="position: fixed; top: 20px; right: 20px; z-index: 9999;"></div>
+<!DOCTYPE html>
+<html>
+<head>
+   <title>Google Translate Button</title>
+</head>
+<body>
+   <div id="google_translate_element"></div>
+   <script type="text/javascript">
+      function googleTranslateElementInit() {
+         new google.translate.TranslateElement({
+            pageLanguage: 'en', layout: 
+            google.translate.TranslateElement.InlineLayout.HORIZONTAL, autoDisplay: 
+            false, includedLanguages: 'fr,de,es', gaTrack: true, gaId: 'AIzaSyCKrQIQO07MeFQ_z0jFxeYVjqzSnYleb3g'
+            }, 'google_translate_element');
+      }
+   </script>
+   <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+</body>
+</html>
 
-<script type="text/javascript">
-  function googleTranslateElementInit() {
-    new google.translate.TranslateElement({
-      pageLanguage: 'zh-CN',
-      includedLanguages: 'en,zh-CN,ja,ko,fr,de,es',
-      layout: google.translate.TranslateElement.InlineLayout.SIMPLE
-    }, 'google_translate_element');
-  }
-</script>
 
 <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 
