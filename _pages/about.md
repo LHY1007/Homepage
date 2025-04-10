@@ -8,7 +8,7 @@ redirect_from:
   - /about.html
 ---
 
-<div id="google_translate_element" style="position: fixed; top: 20px; right: 20px; z-index: 9999;"></div>
+<div id="google_translate_element" style="position: fixed; top: 100px; right: 20px; z-index: 9999;"></div>
 
 <script type="text/javascript">
   function googleTranslateElementInit() {
