@@ -9,7 +9,6 @@ redirect_from:
 ---
 
 
-<!DOCTYPE html>
 <html>
 <head>
    <meta charset="UTF-8">
@@ -34,6 +33,8 @@ redirect_from:
    <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 </body>
 </html>
+
+
 
 <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 
@@ -202,4 +203,9 @@ redirect_from:
 </div>
 </div> -->
 
-
+<a href="#" id="toTop" style="display: none;">⬆️ Back to Top</a>
+<script>
+  window.onscroll = function() {
+    document.getElementById('toTop').style.display = (window.scrollY > 100) ? 'block' : 'none';
+  };
+</script>
