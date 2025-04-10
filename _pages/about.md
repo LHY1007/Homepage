@@ -202,3 +202,10 @@ redirect_from:
 
 </div>
 </div> -->
+
+<a href="#" id="toTop" style="display: none;">⬆️ Back to Top</a>
+<script>
+  window.onscroll = function() {
+    document.getElementById('toTop').style.display = (window.scrollY > 100) ? 'block' : 'none';
+  };
+</script>
