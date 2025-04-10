@@ -18,6 +18,8 @@ redirect_from:
          background: #fff;
          color: #000;
          transition: background 0.3s, color 0.3s;
+         margin: 0;
+         padding: 0;
       }
 
       /* 暗色模式 */
@@ -31,8 +33,8 @@ redirect_from:
          position: fixed;
          top: 20px;
          right: 20px;
-         z-index: 9999;
-         background-color: transparent; /* 确保背景透明，不被其他内容遮挡 */
+         z-index: 10000; /* 设置非常高的 z-index */
+         background-color: transparent;
       }
       
       /* 切换按钮的样式 */
@@ -46,7 +48,7 @@ redirect_from:
          position: fixed;
          top: 60px;
          right: 20px;
-         z-index: 9999;
+         z-index: 9999; /* 设置 z-index 确保按钮不被覆盖 */
       }
 
       button:hover {
@@ -62,6 +64,7 @@ redirect_from:
    <button onclick="toggleDark()">🌙 切换暗色模式</button>
 
    <script type="text/javascript">
+      // 初始化 Google 翻译插件
       function googleTranslateElementInit() {
          new google.translate.TranslateElement({
             pageLanguage: 'zh-CN', // 设置当前页面语言为简体中文
@@ -83,6 +86,7 @@ redirect_from:
    </script>
 </body>
 </html>
+
 
 
 
