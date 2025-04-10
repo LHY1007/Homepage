@@ -6,7 +6,7 @@
 # `jekyll serve`. If you change this file, please restart the server process.
 
 # Site Settings
-title                    : "Liu Hanyu"
+title                    : "刘涵瑜"
 # repository               : "tangjyan/tangjyan.github.io"
 google_scholar_stats_use_cdn : false
 
@@ -20,7 +20,7 @@ google_analytics_id      :  # get google_analytics_id from https://analytics.goo
 
 # Site Author
 author:
-  name             : "Liu Hanyu"
+  name             : "刘涵瑜"
   avatar           : "images/Me.jpg"
   bio              : "NEU & UoD"
   location         : "UK"
