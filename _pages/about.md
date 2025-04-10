@@ -7,6 +7,19 @@ redirect_from:
   - /about/
   - /about.html
 ---
+<div id="google_translate_element" style="position: fixed; top: 20px; right: 20px; z-index: 9999;"></div>
+
+<script type="text/javascript">
+  function googleTranslateElementInit() {
+    new google.translate.TranslateElement({
+      pageLanguage: 'zh-CN',
+      includedLanguages: 'en,zh-CN,ja,ko,fr,de,es',
+      layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+    }, 'google_translate_element');
+  }
+</script>
+
+<script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 
 <!-- {% if site.google_scholar_stats_use_cdn %}
 {% assign gsDataBaseUrl = "https://cdn.jsdelivr.net/gh/" | append: site.repository | append: "@" %}
@@ -141,7 +154,7 @@ redirect_from:
 <span class='anchor' id='-ryjx'></span>
 
 <h3>🏅 荣誉奖项</h3> 
-- *2024.8* 获得 中国大学生计算机博弈大赛——第十七届中国计算机博弈锦标赛 `一等奖`  
+- *2024.8* 获得 中国大学生计算机博弈大赛——第十八届中国计算机博弈锦标赛 `一等奖`  
 - *2024.4* 获得 中国国家大学生创新设计训练计划项目 `专业第一名, 国家级优秀结题`  
 - *2023.8* 获得 中国大学生生物医学工程创新设计大赛 `第一名, 二等奖` 
 - *2023.8* 获得 中国大学生计算机博弈大赛——第十七届中国计算机博弈锦标赛 `二等奖`  
