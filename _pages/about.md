@@ -78,7 +78,7 @@ redirect_from:
       function googleTranslateElementInit() {
          new google.translate.TranslateElement({
             pageLanguage: 'zh-CN', // 设置当前页面语言为简体中文
-            includedLanguages: 'zh-CN,zh-TW,en,fr,es,ja,ko,de,ar,pt,ru,it,nl,sv,tr,hi,th,id,pl,cs,el', // 按所需语言顺序排列
+            includedLanguages: 'zh-CN,zh-TW,en,fr,es,ja,ko,de,ar,pt,ru', // 按所需语言顺序排列
             layout: google.translate.TranslateElement.InlineLayout.HORIZONTAL, // 横向按钮布局
             autoDisplay: false
          }, 'google_translate_element');
