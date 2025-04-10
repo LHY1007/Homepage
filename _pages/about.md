@@ -60,7 +60,7 @@ redirect_from:
       /* Google Translate 插件的容器位置 */
       #google_translate_element {
          position: fixed;
-         top: 120px; /* 改变这个值，使按钮位置往下偏移 */
+         top: 140px; /* 改变这个值，使按钮位置往下偏移 */
          right: 10px;
          z-index: 9999;
       }
