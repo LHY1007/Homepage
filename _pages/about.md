@@ -8,45 +8,91 @@ redirect_from:
   - /about.html
 ---
 
-
-<html>
+<!DOCTYPE html>
+<html lang="zh">
 <head>
    <meta charset="UTF-8">
-   <title>Google Translate Button</title>
+   <title>Google Translate + 暗色模式</title>
+   <style>
+      body {
+         margin: 0;
+         font-family: sans-serif;
+      }
+
+      /* 顶部工具栏 */
+      #toolbar {
+         position: fixed;
+         top: 0;
+         left: 0;
+         width: 100%;
+         background: #fff;
+         padding: 10px 20px;
+         display: flex;
+         justify-content: space-between;
+         align-items: center;
+         box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+         z-index: 9999;
+      }
+
+      /* Google 翻译容器 */
+      #google_translate_element {
+         margin-right: 10px;
+      }
+
+      /* 暗色模式 */
+      .dark-mode {
+         background: #111;
+         color: #eee;
+      }
+
+      .dark-mode #toolbar {
+         background: #222;
+         color: #eee;
+         box-shadow: none;
+      }
+
+      main {
+         padding-top: 70px; /* 避免内容被toolbar遮住 */
+         padding: 20px;
+      }
+   </style>
 </head>
 <body>
-   <!-- Google Translate 插件容器 -->
-   <div id="google_translate_element" style="position: fixed; top: 20px; right: 20px; z-index: 9999;"></div>
 
+   <!-- 顶部工具栏 -->
+   <div id="toolbar">
+      <div id="google_translate_element"></div>
+      <button onclick="toggleDark()">🌙 切换暗色模式</button>
+   </div>
+
+   <main>
+      <h1>欢迎访问我的主页</h1>
+      <p>这里是一些页面内容，用于测试翻译与切换暗色主题功能是否正常。</p>
+   </main>
+
+   <!-- Google Translate 初始化 -->
    <script type="text/javascript">
       function googleTranslateElementInit() {
          new google.translate.TranslateElement({
-            pageLanguage: 'zh-CN', // 设置当前页面语言为简体中文
-            includedLanguages: 'zh-CN,zh-TW,en,fr,de,es,ja,ko', // 可翻译的目标语言
-            layout: google.translate.TranslateElement.InlineLayout.HORIZONTAL, // 横向按钮布局
+            pageLanguage: 'zh-CN',
+            includedLanguages: 'zh-CN,zh-TW,en,fr,de,es,ja,ko',
+            layout: google.translate.TranslateElement.InlineLayout.HORIZONTAL,
             autoDisplay: false
          }, 'google_translate_element');
       }
    </script>
-
-   <!-- 引入 Google Translate 的脚本 -->
+   <!-- 引入 Google Translate 脚本 -->
    <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+   <!-- 暗色模式切换 -->
+   <script>
+      function toggleDark() {
+         document.body.classList.toggle('dark-mode');
+      }
+   </script>
+
 </body>
 </html>
-
-
-<button onclick="toggleDark()">🌙 切换暗色模式</button>
-<script>
-function toggleDark() {
-  document.body.classList.toggle('dark-mode');
-}
-</script>
-<style>
-.dark-mode {
-  background: #111;
-  color: #eee;
-}
-</style>
 
 
 
