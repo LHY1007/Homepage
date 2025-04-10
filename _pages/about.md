@@ -8,63 +8,18 @@ redirect_from:
   - /about.html
 ---
 
+
+<!DOCTYPE html>
 <html>
 <head>
    <meta charset="UTF-8">
    <title>Google Translate Button</title>
-   <style>
-      /* 默认为白色模式 */
-      body {
-         background: #fff;
-         color: #000;
-         transition: background 0.3s, color 0.3s;
-         margin: 0;
-         padding: 0;
-      }
-
-      /* 暗色模式 */
-      .dark-mode {
-         background: #111;
-         color: #eee;
-      }
-
-      /* 设置 Google Translate 按钮的样式 */
-      #google_translate_element {
-         position: fixed;
-         top: 20px;
-         right: 20px;
-         z-index: 10000; /* 设置非常高的 z-index */
-         background-color: transparent;
-      }
-      
-      /* 切换按钮的样式 */
-      button {
-         padding: 10px;
-         background-color: #444;
-         color: #fff;
-         border: none;
-         cursor: pointer;
-         font-size: 16px;
-         position: fixed;
-         top: 60px;
-         right: 20px;
-         z-index: 9999; /* 设置 z-index 确保按钮不被覆盖 */
-      }
-
-      button:hover {
-         background-color: #666;
-      }
-   </style>
 </head>
 <body>
    <!-- Google Translate 插件容器 -->
-   <div id="google_translate_element"></div>
-
-   <!-- 切换暗色模式的按钮 -->
-   <button onclick="toggleDark()">🌙 切换暗色模式</button>
+   <div id="google_translate_element" style="position: fixed; top: 20px; right: 20px; z-index: 9999;"></div>
 
    <script type="text/javascript">
-      // 初始化 Google 翻译插件
       function googleTranslateElementInit() {
          new google.translate.TranslateElement({
             pageLanguage: 'zh-CN', // 设置当前页面语言为简体中文
@@ -77,16 +32,8 @@ redirect_from:
 
    <!-- 引入 Google Translate 的脚本 -->
    <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
-
-   <script>
-      // 切换暗色模式的功能
-      function toggleDark() {
-         document.body.classList.toggle('dark-mode');
-      }
-   </script>
 </body>
 </html>
-
 
 
 
