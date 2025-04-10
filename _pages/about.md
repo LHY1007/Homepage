@@ -8,7 +8,6 @@ redirect_from:
   - /about.html
 ---
 
-
 <html>
 <head>
    <meta charset="UTF-8">
@@ -27,6 +26,15 @@ redirect_from:
             autoDisplay: false
          }, 'google_translate_element');
       }
+
+      // 检查Google Translate是否加载成功
+      window.addEventListener('load', function() {
+         if (typeof google !== 'undefined' && google.translate) {
+            console.log('Google Translate API loaded successfully');
+         } else {
+            console.error('Google Translate API failed to load');
+         }
+      });
    </script>
 
    <!-- 引入 Google Translate 的脚本 -->
@@ -35,8 +43,6 @@ redirect_from:
 </html>
 
 
-
-<script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 
 <!-- {% if site.google_scholar_stats_use_cdn %}
 {% assign gsDataBaseUrl = "https://cdn.jsdelivr.net/gh/" | append: site.repository | append: "@" %}
