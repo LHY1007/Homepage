@@ -8,41 +8,28 @@ redirect_from:
   - /about.html
 ---
 
+<!DOCTYPE html>
 <html>
 <head>
-   <meta charset="UTF-8">
    <title>Google Translate Button</title>
 </head>
 <body>
-   <!-- Google Translate 插件容器 -->
-   <div id="google_translate_element" style="position: fixed; top: 20px; right: 20px; z-index: 9999;"></div>
-
+   <div id="google_translate_element"></div>
    <script type="text/javascript">
       function googleTranslateElementInit() {
          new google.translate.TranslateElement({
-            pageLanguage: 'zh-CN', // 设置当前页面语言为简体中文
-            includedLanguages: 'zh-CN,zh-TW,en,fr,de,es,ja,ko', // 可翻译的目标语言
-            layout: google.translate.TranslateElement.InlineLayout.HORIZONTAL, // 横向按钮布局
-            autoDisplay: false
-         }, 'google_translate_element');
+            pageLanguage: 'en', layout: 
+            google.translate.TranslateElement.InlineLayout.HORIZONTAL, autoDisplay: 
+            false, includedLanguages: 'fr,de,es', gaTrack: true, gaId: 'AIzaSyCKrQIQO07MeFQ_z0jFxeYVjqzSnYleb3g'
+            }, 'google_translate_element');
       }
-
-      // 检查Google Translate是否加载成功
-      window.addEventListener('load', function() {
-         if (typeof google !== 'undefined' && google.translate) {
-            console.log('Google Translate API loaded successfully');
-         } else {
-            console.error('Google Translate API failed to load');
-         }
-      });
    </script>
-
-   <!-- 引入 Google Translate 的脚本 -->
    <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 </body>
 </html>
 
 
+<script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 
 <!-- {% if site.google_scholar_stats_use_cdn %}
 {% assign gsDataBaseUrl = "https://cdn.jsdelivr.net/gh/" | append: site.repository | append: "@" %}
@@ -208,10 +195,3 @@ redirect_from:
 
 </div>
 </div> -->
-
-<a href="#" id="toTop" style="display: none;">⬆️ Back to Top</a>
-<script>
-  window.onscroll = function() {
-    document.getElementById('toTop').style.display = (window.scrollY > 100) ? 'block' : 'none';
-  };
-</script>
