@@ -8,19 +8,31 @@ redirect_from:
   - /about.html
 ---
 
-<div id="google_translate_element" style="position: fixed; top: 100px; right: 20px; z-index: 9999;"></div>
+<html>
+<head>
+   <meta charset="UTF-8">
+   <title>Google Translate Button</title>
+</head>
+<body>
+   <!-- Google Translate 插件容器 -->
+   <div id="google_translate_element" style="position: fixed; top: 70px; right: 20px; z-index: 9999;"></div>
 
-<script type="text/javascript">
-  function googleTranslateElementInit() {
-    new google.translate.TranslateElement({
-      pageLanguage: 'zh-CN',
-      includedLanguages: 'en,zh-CN,ja,ko,fr,de,es',
-      layout: google.translate.TranslateElement.InlineLayout.SIMPLE
-    }, 'google_translate_element');
-  }
-</script>
+   <script type="text/javascript">
+      function googleTranslateElementInit() {
+         new google.translate.TranslateElement({
+            pageLanguage: 'zh-CN', // 设置当前页面语言为简体中文
+            includedLanguages: 'zh-CN,zh-TW,en,fr,de,es,ja,ko', // 可翻译的目标语言
+            layout: google.translate.TranslateElement.InlineLayout.HORIZONTAL, // 横向按钮布局
+            autoDisplay: false
+         }, 'google_translate_element');
+      }
+   </script>
 
-<script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+   <!-- 引入 Google Translate 的脚本 -->
+   <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+</body>
+</html>
+
 
 <!-- {% if site.google_scholar_stats_use_cdn %}
 {% assign gsDataBaseUrl = "https://cdn.jsdelivr.net/gh/" | append: site.repository | append: "@" %}
