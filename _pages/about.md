@@ -59,7 +59,7 @@ redirect_from:
    <div id="google_translate_element"></div>
 
    <!-- 切换暗色模式的按钮 -->
-   <button onclick="toggleDark()">🌙 切换模式</button>
+   <button onclick="toggleDark()">🌙 切换暗色模式</button>
 
    <script type="text/javascript">
       function googleTranslateElementInit() {
