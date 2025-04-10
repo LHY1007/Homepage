@@ -11,13 +11,70 @@ redirect_from:
 <html>
 <head>
    <meta charset="UTF-8">
-   <title>Google Translate Button</title>
+   <title>Google Translate Button with Day/Night Mode</title>
+   <style>
+      /* 白天模式的基本样式 */
+      body {
+         background-color: #fff;
+         color: #000;
+         transition: background-color 0.3s, color 0.3s;
+      }
+
+      /* 黑夜模式的基本样式 */
+      .dark-mode {
+         background-color: #111;
+         color: #eee;
+      }
+
+      /* 让Google Translate按钮适配不同模式 */
+      #google_translate_element {
+         background-color: transparent;
+         border: none;
+         transition: background-color 0.3s;
+      }
+
+      /* 按钮样式 */
+      button {
+         position: fixed;
+         top: 60px; /* 改变这个值，使按钮位置往下偏移 */
+         right: 10px;
+         z-index: 9999;
+         background-color: #007BFF;  /* 白天模式下的按钮背景色 */
+         color: white;  /* 白天模式下的按钮文字颜色 */
+         border: none;
+         padding: 10px 15px;
+         cursor: pointer;
+         border-radius: 5px;
+      }
+
+      button:hover {
+         background-color: #0056b3;
+      }
+
+      /* 黑夜模式按钮样式 */
+      .dark-mode button {
+         background-color: #333;  /* 黑夜模式下的按钮背景色 */
+         color: #fff;  /* 黑夜模式下的按钮文字颜色 */
+      }
+
+      /* Google Translate 插件的容器位置 */
+      #google_translate_element {
+         position: fixed;
+         top: 30px; /* 改变这个值，使按钮位置往下偏移 */
+         right: 20px;
+         z-index: 9999;
+      }
+   </style>
 </head>
 <body>
+   <!-- 切换模式按钮 -->
+   <button onclick="toggleDark()">🌙 切换暗色模式</button>
+
    <!-- Google Translate 插件容器 -->
-   <div id="google_translate_element" style="position: fixed; top: 40px; right: 20px; z-index: 9999;"></div>
+   <div id="google_translate_element"></div>
 
    <script type="text/javascript">
+      // 初始化Google Translate插件
       function googleTranslateElementInit() {
          new google.translate.TranslateElement({
             pageLanguage: 'zh-CN', // 设置当前页面语言为简体中文
@@ -26,12 +83,23 @@ redirect_from:
             autoDisplay: false
          }, 'google_translate_element');
       }
-   </script>
 
-   <!-- 引入 Google Translate 的脚本 -->
-   <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+      // 引入Google Translate脚本
+      (function() {
+         var script = document.createElement('script');
+         script.type = 'text/javascript';
+         script.src = 'https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit';
+         document.body.appendChild(script);
+      })();
+
+      // 切换白天/黑夜模式的函数
+      function toggleDark() {
+         document.body.classList.toggle('dark-mode');
+      }
+   </script>
 </body>
 </html>
+
 
 
 
