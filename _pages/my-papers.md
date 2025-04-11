@@ -366,6 +366,23 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   });
   
+  // 目录平滑滚动功能
+  document.querySelectorAll('.papers-nav a').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+      e.preventDefault();
+      
+      const targetId = this.getAttribute('href').substring(1);
+      const targetElement = document.getElementById(targetId);
+      
+      if (targetElement) {
+        window.scrollTo({
+          top: targetElement.offsetTop - 20,
+          behavior: 'smooth'
+        });
+      }
+    });
+  });
+  
   // 过滤功能
   const filterButtons = document.querySelectorAll('.filter-button');
   const paperCards = document.querySelectorAll('.paper-card');
