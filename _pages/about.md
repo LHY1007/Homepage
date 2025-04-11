@@ -187,7 +187,7 @@ redirect_from:
 - AAAI2024 会议审稿
 - IJCAI2024 会议审稿
 - MICCAI2025 会议审稿
-- 为MICCAI-CMMCA2025大会提供技术支持 [[网页]]([/paper/submit3.pdf](https://- miccai-workshop.github.io/CMMCA2025/))
+- 为MICCAI-CMMCA2025大会提供技术支持 [[网页]]([https://- miccai-workshop.github.io/CMMCA2025/])
 - IEEE Transactions on Industrial Informatics 期刊审稿人
 - Engineering Applications of Artificial Intelligence 期刊审稿人
 
