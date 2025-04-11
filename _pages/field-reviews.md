@@ -1,8 +1,7 @@
 ---
-layout: default
+layout: subpage
 permalink: /field-reviews/
 title: "领域解读"
-author_profile: true
 ---
 
 <style>
