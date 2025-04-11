@@ -10,14 +10,31 @@ title: "领域解读"
     padding: 20px 0;
   }
   
+  /* 两列布局 */
+  .two-column-layout {
+    display: flex;
+    gap: 30px;
+    margin-top: 20px;
+  }
+  
+  /* 左侧导航区域 */
+  .sidebar {
+    width: 250px;
+    flex-shrink: 0;
+  }
+  
+  /* 右侧内容区域 */
+  .main-content {
+    flex: 1;
+  }
+  
   /* 导航和标签样式 */
   .reviews-nav {
-    position: sticky;
-    top: 20px;
     background-color: #f5f5f5;
     padding: 15px;
     border-radius: 8px;
-    margin-bottom: 30px;
+    position: sticky;
+    top: 20px;
   }
   
   .reviews-nav h3 {
@@ -29,6 +46,23 @@ title: "领域解读"
     display: flex;
     flex-wrap: wrap;
     gap: 8px;
+  }
+  
+  /* 响应式布局 */
+  @media (max-width: 992px) {
+    .two-column-layout {
+      flex-direction: column;
+    }
+    
+    .sidebar {
+      width: 100%;
+      margin-bottom: 20px;
+    }
+    
+    .reviews-nav {
+      position: relative;
+      top: 0;
+    }
   }
   
   .tag {
@@ -197,41 +231,49 @@ title: "领域解读"
   <h1>领域前沿论文解读</h1>
   <p>这里是我对人工智能、医学影像、人体活动识别等领域前沿论文的解读和分析。通过这些文章，我希望能够帮助读者更好地理解这些领域的最新进展和关键技术。</p>
   
-  <!-- 搜索和过滤区域 -->
-  <div class="search-filter">
-    <input type="text" id="reviewSearch" class="search-box" placeholder="搜索论文标题或关键词...">
-    <select id="categoryFilter" class="filter-dropdown">
-      <option value="all">所有类别</option>
-      <option value="ai">人工智能</option>
-      <option value="medical">医学影像</option>
-      <option value="har">人体活动识别</option>
-      <option value="neuro">神经科学</option>
-    </select>
-    <select id="sortFilter" class="filter-dropdown">
-      <option value="newest">最新发布</option>
-      <option value="oldest">最早发布</option>
-      <option value="popular">最受欢迎</option>
-    </select>
-  </div>
-  
-  <!-- 导航和标签区域 -->
-  <div class="reviews-nav">
-    <h3>主题分类</h3>
-    <div class="tag-cloud">
-      <span class="tag active" data-tag="all">全部</span>
-      <span class="tag" data-tag="transformer">Transformer</span>
-      <span class="tag" data-tag="cnn">CNN</span>
-      <span class="tag" data-tag="diffusion">扩散模型</span>
-      <span class="tag" data-tag="attention">注意力机制</span>
-      <span class="tag" data-tag="multimodal">多模态</span>
-      <span class="tag" data-tag="sensor">传感器</span>
-      <span class="tag" data-tag="mri">MRI</span>
-      <span class="tag" data-tag="transfer">迁移学习</span>
-      <span class="tag" data-tag="time-series">时间序列</span>
-      <span class="tag" data-tag="neuroscience">神经科学</span>
-      <span class="tag" data-tag="federated">联邦学习</span>
+  <!-- 两列布局开始 -->
+  <div class="two-column-layout">
+    
+    <!-- 左侧导航栏 -->
+    <div class="sidebar">
+      <div class="reviews-nav">
+        <h3>主题分类</h3>
+        <div class="tag-cloud">
+          <span class="tag active" data-tag="all">全部</span>
+          <span class="tag" data-tag="transformer">Transformer</span>
+          <span class="tag" data-tag="cnn">CNN</span>
+          <span class="tag" data-tag="diffusion">扩散模型</span>
+          <span class="tag" data-tag="attention">注意力机制</span>
+          <span class="tag" data-tag="multimodal">多模态</span>
+          <span class="tag" data-tag="sensor">传感器</span>
+          <span class="tag" data-tag="mri">MRI</span>
+          <span class="tag" data-tag="transfer">迁移学习</span>
+          <span class="tag" data-tag="time-series">时间序列</span>
+          <span class="tag" data-tag="neuroscience">神经科学</span>
+          <span class="tag" data-tag="federated">联邦学习</span>
+        </div>
+      </div>
     </div>
-  </div>
+    
+    <!-- 右侧内容区域 -->
+    <div class="main-content">
+      
+      <!-- 搜索和过滤区域 -->
+      <div class="search-filter">
+        <input type="text" id="reviewSearch" class="search-box" placeholder="搜索论文标题或关键词...">
+        <select id="categoryFilter" class="filter-dropdown">
+          <option value="all">所有类别</option>
+          <option value="ai">人工智能</option>
+          <option value="medical">医学影像</option>
+          <option value="har">人体活动识别</option>
+          <option value="neuro">神经科学</option>
+        </select>
+        <select id="sortFilter" class="filter-dropdown">
+          <option value="newest">最新发布</option>
+          <option value="oldest">最早发布</option>
+          <option value="popular">最受欢迎</option>
+        </select>
+      </div>
   
   <!-- 论文解读列表 -->
   <div class="reviews-list">
@@ -349,7 +391,10 @@ title: "领域解读"
       <p>研究热点趋势图 - 点击交互</p>
     </div>
     <p><small>数据来源：基于Google Scholar和Web of Science论文分析</small></p>
-  </div>
+    </div> <!-- 结束可视化部分 -->
+    
+    </div> <!-- 结束右侧内容区域 -->
+  </div> <!-- 结束两列布局 -->
 </div>
 
 <script>
