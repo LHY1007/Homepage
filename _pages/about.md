@@ -165,8 +165,6 @@ redirect_from:
 
 # 📝 学术成果
 
-### 已发表论文
-<!DOCTYPE html>
 <html lang="zh-CN">
 <head>
   <meta charset="UTF-8">
