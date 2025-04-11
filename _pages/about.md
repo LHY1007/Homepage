@@ -260,7 +260,8 @@ redirect_from:
           <div class="publication-links">
             <a href="https://www.sciencedirect.com/science/article/pii/S1361841525000532">[网页]</a>
             <a href="https://arxiv.org/pdf/2502.07979">[预览]</a>
-            <a href="/paper/MedIA.pdf">[下载]</a>
+            <a href="/paper/MedIA.pdf"  download>[下载]</a>
+
           </div>
         </div>
         <div class="publication-toggle">▼</div>
@@ -279,7 +280,7 @@ redirect_from:
           <div class="publication-links">
             <a href="https://www.ijcai.org/proceedings/2024/351">[网页]</a>
             <a href="https://www.ijcai.org/proceedings/2024/0351.pdf">[预览]</a>
-            <a href="/paper/IJCAI2024.pdf">[下载]</a>
+            <a href="/paper/IJCAI2024.pdf"  download>[下载]</a>
           </div>
         </div>
         <div class="publication-toggle">▼</div>
@@ -298,7 +299,7 @@ redirect_from:
           <div class="publication-links">
             <a href="https://iopscience.iop.org/article/10.1088/1361-6579/ad0ab8/meta">[网页]</a>
             <a href="https://iopscience.iop.org/article/10.1088/1361-6579/ad0ab8/pdf">[预览]</a>
-            <a href="/paper/PMEA2023.pdf">[下载]</a>
+            <a href="/paper/PMEA2023.pdf"  download>[下载]</a>
           </div>
         </div>
         <div class="publication-toggle">▼</div>
