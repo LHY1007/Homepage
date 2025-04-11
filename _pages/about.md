@@ -150,6 +150,8 @@ redirect_from:
   <img class="svg" src="/images/UoD_logo.svg" width="90pt" style="margin-left: 40px;">
 </div>
 
+<h3>跳转</h3>
+
 <div style="display: flex; justify-content: center; gap: 20px; margin: 40px 0;">
   <a href="/my-papers/" style="display: inline-block; padding: 12px 24px; background-color: #0074D9; color: white; text-decoration: none; border-radius: 5px; font-weight: bold; transition: all 0.3s;">
     📚 我的论文集
