@@ -166,137 +166,170 @@ redirect_from:
 # 📝 学术成果
 
 ### 已发表论文
-import { useState } from 'react';
-
-// 将数据独立提取到单独的文件，方便二次修改
-// 实际使用时可以将此部分移至独立的 papersData.js 文件中
-const papersData = [
-  {
-    id: 1,
-    citation: "Wang, X.¹, Liu, H.¹, Zhang, Y., Zhao, B., Duan, H., Hu, W., ... & Li, C. (2025). Joint Modelling Histology and Molecular Markers for Cancer Classification. Medical Image Analysis, 102(4): 103505.",
-    links: {
-      web: "https://www.sciencedirect.com/science/article/pii/S1361841525000532",
-      preview: "https://arxiv.org/pdf/2502.07979",
-      download: "/paper/MedIA.pdf"
-    },
-    description: "This paper introduces a novel approach for cancer classification by integrating histological images with molecular marker data. The proposed model utilizes a multi-modal deep learning architecture to effectively combine features from different data sources, resulting in improved diagnostic accuracy compared to single-modality methods. Our framework demonstrates significant performance improvements across multiple cancer types and provides interpretable results that can aid clinicians in treatment planning."
-  },
-  {
-    id: 2,
-    citation: "Liu, H.¹, Wang, Z.*,¹, Zhao, B., Shen, Q., Li, M., Que, N., ... & Xin, J.* (2024, August). Multi-scale context-aware networks based on fragment association for human activity recognition. In Proceedings of the Thirty-Third International Joint Conference on Artificial Intelligence (pp. 3169-3177).",
-    links: {
-      web: "https://www.ijcai.org/proceedings/2024/351",
-      preview: "https://www.ijcai.org/proceedings/2024/0351.pdf",
-      download: "/paper/IJCAI2024.pdf"
-    },
-    description: "This work presents a novel approach to human activity recognition through multi-scale context-aware networks. We introduce a fragment association mechanism that enables the model to capture temporal relationships across different time scales. Our method achieves state-of-the-art performance on multiple benchmark datasets by effectively modeling both local and global temporal patterns in sensor data, leading to more robust recognition of complex human activities."
-  },
-  {
-    id: 3,
-    citation: "Liu, H.¹, Zhao, B.¹, Dai, C., Sun, B., Li, A., & Wang, Z* (2023). MAG-Res2Net: A novel deep learning network for human activity recognition. Physiological Measurement, 44(11), 115007.",
-    links: {
-      web: "https://iopscience.iop.org/article/10.1088/1361-6579/ad0ab8/meta",
-      preview: "https://iopscience.iop.org/article/10.1088/1361-6579/ad0ab8/pdf",
-      download: "/paper/PMEA2023.pdf"
-    },
-    description: "In this paper, we propose MAG-Res2Net, an innovative deep learning architecture specifically designed for human activity recognition using wearable sensor data. Our network combines multi-attention gating mechanisms with a hierarchical residual structure to capture both fine-grained motion details and high-level activity patterns. Extensive experiments demonstrate that MAG-Res2Net outperforms existing methods, particularly for complex activities and in challenging real-world scenarios with noise and variability."
-  }
-];
-
-const PublicationDisplay = () => {
-  const [expandedPaper, setExpandedPaper] = useState(null);
-
-  // 可复用的组件
-  const PaperCard = ({ paper, isExpanded, toggleExpand }) => {
-    // 高亮自己的名字
-    const highlightName = (text) => {
-      return text.replace(/Liu, H\./g, '<strong>Liu, H.</strong>');
-    };
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Publications</title>
+  <style>
+    .publications-container {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      max-width: 800px;
+      margin: 0 auto;
+    }
     
-    return (
-      <div className="border rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow">
-        <div 
-          className="p-4 cursor-pointer flex justify-between items-start"
-          onClick={toggleExpand}
-        >
-          <div>
-            <p 
-              className="text-base" 
-              dangerouslySetInnerHTML={{ __html: highlightName(paper.citation) }}
-            />
-            <div className="mt-2 flex space-x-3">
-              <a 
-                href={paper.links.web} 
-                className="text-blue-600 hover:underline text-sm"
-                onClick={(e) => e.stopPropagation()}
-              >
-                [网页]
-              </a>
-              <a 
-                href={paper.links.preview} 
-                className="text-blue-600 hover:underline text-sm"
-                onClick={(e) => e.stopPropagation()}
-              >
-                [预览]
-              </a>
-              <a 
-                href={paper.links.download} 
-                className="text-blue-600 hover:underline text-sm"
-                onClick={(e) => e.stopPropagation()}
-              >
-                [下载]
-              </a>
-            </div>
-          </div>
-          <div className="text-gray-400">
-            {isExpanded ? (
-              <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-                <path fillRule="evenodd" d="M14.707 12.707a1 1 0 01-1.414 0L10 9.414l-3.293 3.293a1 1 0 01-1.414-1.414l4-4a1 1 0 011.414 0l4 4a1 1 0 010 1.414z" clipRule="evenodd" />
-              </svg>
-            ) : (
-              <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-                <path fillRule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clipRule="evenodd" />
-              </svg>
-            )}
+    .publication-item {
+      border: 1px solid #e0e0e0;
+      border-radius: 8px;
+      margin-bottom: 16px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+      transition: box-shadow 0.3s ease;
+    }
+    
+    .publication-item:hover {
+      box-shadow: 0 3px 6px rgba(0,0,0,0.15);
+    }
+    
+    .publication-header {
+      padding: 16px;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+    }
+    
+    .publication-citation {
+      margin: 0;
+      line-height: 1.5;
+    }
+    
+    .publication-links {
+      margin-top: 8px;
+    }
+    
+    .publication-links a {
+      color: #0366d6;
+      text-decoration: none;
+      margin-right: 12px;
+      font-size: 14px;
+    }
+    
+    .publication-links a:hover {
+      text-decoration: underline;
+    }
+    
+    .publication-toggle {
+      color: #767676;
+      flex-shrink: 0;
+      margin-left: 12px;
+    }
+    
+    .publication-detail {
+      padding: 16px;
+      background-color: #f7f7f7;
+      border-top: 1px solid #e0e0e0;
+      display: none;
+    }
+    
+    .publication-detail h4 {
+      margin-top: 0;
+      margin-bottom: 8px;
+      font-weight: 500;
+    }
+    
+    .publication-detail p {
+      margin: 0;
+      font-size: 14px;
+      color: #444;
+      line-height: 1.5;
+    }
+    
+    .highlight {
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <div class="publications-container">
+    <h3 style="font-size: 1.25rem; font-weight: bold; margin-bottom: 1rem;">已发表论文</h3>
+    
+    <!-- Publication 1 -->
+    <div class="publication-item">
+      <div class="publication-header" onclick="toggleDetail(this)">
+        <div>
+          <p class="publication-citation">Wang, X.¹, <span class="highlight">Liu, H.</span>¹, Zhang, Y., Zhao, B., Duan, H., Hu, W., ... & Li, C. (2025). Joint Modelling Histology and Molecular Markers for Cancer Classification. Medical Image Analysis, 102(4): 103505.</p>
+          <div class="publication-links">
+            <a href="https://www.sciencedirect.com/science/article/pii/S1361841525000532">[网页]</a>
+            <a href="https://arxiv.org/pdf/2502.07979">[预览]</a>
+            <a href="/paper/MedIA.pdf">[下载]</a>
           </div>
         </div>
-        
-        {isExpanded && (
-          <div className="px-4 py-3 bg-gray-50 border-t">
-            <h4 className="font-medium mb-2">论文简介</h4>
-            <p className="text-sm text-gray-700">{paper.description}</p>
-          </div>
-        )}
+        <div class="publication-toggle">▼</div>
       </div>
-    );
-  };
-
-  const togglePaper = (id) => {
-    if (expandedPaper === id) {
-      setExpandedPaper(null);
-    } else {
-      setExpandedPaper(id);
-    }
-  };
-
-  return (
-    <div className="w-full">
-      <h3 className="text-xl font-bold mb-4">已发表论文</h3>
-      <div className="space-y-4">
-        {papersData.map((paper) => (
-          <PaperCard 
-            key={paper.id}
-            paper={paper}
-            isExpanded={expandedPaper === paper.id}
-            toggleExpand={() => togglePaper(paper.id)}
-          />
-        ))}
+      <div class="publication-detail">
+        <h4>论文简介</h4>
+        <p>This paper introduces a novel approach for cancer classification by integrating histological images with molecular marker data. The proposed model utilizes a multi-modal deep learning architecture to effectively combine features from different data sources, resulting in improved diagnostic accuracy compared to single-modality methods. Our framework demonstrates significant performance improvements across multiple cancer types and provides interpretable results that can aid clinicians in treatment planning.</p>
       </div>
     </div>
-  );
-};
+    
+    <!-- Publication 2 -->
+    <div class="publication-item">
+      <div class="publication-header" onclick="toggleDetail(this)">
+        <div>
+          <p class="publication-citation"><span class="highlight">Liu, H.</span>¹, Wang, Z.*,¹, Zhao, B., Shen, Q., Li, M., Que, N., ... & Xin, J.* (2024, August). Multi-scale context-aware networks based on fragment association for human activity recognition. In Proceedings of the Thirty-Third International Joint Conference on Artificial Intelligence (pp. 3169-3177).</p>
+          <div class="publication-links">
+            <a href="https://www.ijcai.org/proceedings/2024/351">[网页]</a>
+            <a href="https://www.ijcai.org/proceedings/2024/0351.pdf">[预览]</a>
+            <a href="/paper/IJCAI2024.pdf">[下载]</a>
+          </div>
+        </div>
+        <div class="publication-toggle">▼</div>
+      </div>
+      <div class="publication-detail">
+        <h4>论文简介</h4>
+        <p>This work presents a novel approach to human activity recognition through multi-scale context-aware networks. We introduce a fragment association mechanism that enables the model to capture temporal relationships across different time scales. Our method achieves state-of-the-art performance on multiple benchmark datasets by effectively modeling both local and global temporal patterns in sensor data, leading to more robust recognition of complex human activities.</p>
+      </div>
+    </div>
+    
+    <!-- Publication 3 -->
+    <div class="publication-item">
+      <div class="publication-header" onclick="toggleDetail(this)">
+        <div>
+          <p class="publication-citation"><span class="highlight">Liu, H.</span>¹, Zhao, B.¹, Dai, C., Sun, B., Li, A., & Wang, Z* (2023). MAG-Res2Net: A novel deep learning network for human activity recognition. Physiological Measurement, 44(11), 115007.</p>
+          <div class="publication-links">
+            <a href="https://iopscience.iop.org/article/10.1088/1361-6579/ad0ab8/meta">[网页]</a>
+            <a href="https://iopscience.iop.org/article/10.1088/1361-6579/ad0ab8/pdf">[预览]</a>
+            <a href="/paper/PMEA2023.pdf">[下载]</a>
+          </div>
+        </div>
+        <div class="publication-toggle">▼</div>
+      </div>
+      <div class="publication-detail">
+        <h4>论文简介</h4>
+        <p>In this paper, we propose MAG-Res2Net, an innovative deep learning architecture specifically designed for human activity recognition using wearable sensor data. Our network combines multi-attention gating mechanisms with a hierarchical residual structure to capture both fine-grained motion details and high-level activity patterns. Extensive experiments demonstrate that MAG-Res2Net outperforms existing methods, particularly for complex activities and in challenging real-world scenarios with noise and variability.</p>
+      </div>
+    </div>
+  </div>
 
-export default PublicationDisplay;
+  <script>
+    function toggleDetail(element) {
+      // 获取论文详情区域
+      const detail = element.parentNode.querySelector('.publication-detail');
+      const toggle = element.querySelector('.publication-toggle');
+      
+      // 切换详情区域显示状态
+      if (detail.style.display === 'block') {
+        detail.style.display = 'none';
+        toggle.textContent = '▼';
+      } else {
+        detail.style.display = 'block';
+        toggle.textContent = '▲';
+      }
+    }
+  </script>
+</body>
+</html>
 
 ---
 ### 在投论文
