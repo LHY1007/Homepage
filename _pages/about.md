@@ -166,17 +166,137 @@ redirect_from:
 # 📝 学术成果
 
 ### 已发表论文
-<!-- <div class='paper-box'><div class='paper-box-image'><div><div class="badge">Sensors 2022</div><img src='images/MedIA.svg' alt="sym" width="100%"></div></div>
-<div class='paper-box-text' markdown="1"> -->
-<!-- </div>
-</div> -->
-- Wang, X.^1^, `Liu, H.`^1^, Zhang, Y., Zhao, B., Duan, H., Hu, W., ... & Li, C. (2025). Joint Modelling Histology and Molecular Markers for Cancer Classification. Medical Image Analysis, 102(4): 103505.
-[[网页]](https://www.sciencedirect.com/science/article/pii/S1361841525000532) [[预览]](https://arxiv.org/pdf/2502.07979) [[下载]](/paper/MedIA.pdf)
+import { useState } from 'react';
 
-- `Liu, H.`^1^, Wang, Z.* ^,1^, Zhao, B., Shen, Q., Li, M., Que, N., ... & Xin, J.* (2024, August). Multi-scale context-aware networks based on fragment association for human activity recognition. In Proceedings of the Thirty-Third International Joint Conference on Artificial Intelligence (pp. 3169-3177).[[网页]](https://www.ijcai.org/proceedings/2024/351) [[预览]](https://www.ijcai.org/proceedings/2024/0351.pdf) [[下载]](/paper/IJCAI2024.pdf)
+// 将数据独立提取到单独的文件，方便二次修改
+// 实际使用时可以将此部分移至独立的 papersData.js 文件中
+const papersData = [
+  {
+    id: 1,
+    citation: "Wang, X.¹, Liu, H.¹, Zhang, Y., Zhao, B., Duan, H., Hu, W., ... & Li, C. (2025). Joint Modelling Histology and Molecular Markers for Cancer Classification. Medical Image Analysis, 102(4): 103505.",
+    links: {
+      web: "https://www.sciencedirect.com/science/article/pii/S1361841525000532",
+      preview: "https://arxiv.org/pdf/2502.07979",
+      download: "/paper/MedIA.pdf"
+    },
+    description: "This paper introduces a novel approach for cancer classification by integrating histological images with molecular marker data. The proposed model utilizes a multi-modal deep learning architecture to effectively combine features from different data sources, resulting in improved diagnostic accuracy compared to single-modality methods. Our framework demonstrates significant performance improvements across multiple cancer types and provides interpretable results that can aid clinicians in treatment planning."
+  },
+  {
+    id: 2,
+    citation: "Liu, H.¹, Wang, Z.*,¹, Zhao, B., Shen, Q., Li, M., Que, N., ... & Xin, J.* (2024, August). Multi-scale context-aware networks based on fragment association for human activity recognition. In Proceedings of the Thirty-Third International Joint Conference on Artificial Intelligence (pp. 3169-3177).",
+    links: {
+      web: "https://www.ijcai.org/proceedings/2024/351",
+      preview: "https://www.ijcai.org/proceedings/2024/0351.pdf",
+      download: "/paper/IJCAI2024.pdf"
+    },
+    description: "This work presents a novel approach to human activity recognition through multi-scale context-aware networks. We introduce a fragment association mechanism that enables the model to capture temporal relationships across different time scales. Our method achieves state-of-the-art performance on multiple benchmark datasets by effectively modeling both local and global temporal patterns in sensor data, leading to more robust recognition of complex human activities."
+  },
+  {
+    id: 3,
+    citation: "Liu, H.¹, Zhao, B.¹, Dai, C., Sun, B., Li, A., & Wang, Z* (2023). MAG-Res2Net: A novel deep learning network for human activity recognition. Physiological Measurement, 44(11), 115007.",
+    links: {
+      web: "https://iopscience.iop.org/article/10.1088/1361-6579/ad0ab8/meta",
+      preview: "https://iopscience.iop.org/article/10.1088/1361-6579/ad0ab8/pdf",
+      download: "/paper/PMEA2023.pdf"
+    },
+    description: "In this paper, we propose MAG-Res2Net, an innovative deep learning architecture specifically designed for human activity recognition using wearable sensor data. Our network combines multi-attention gating mechanisms with a hierarchical residual structure to capture both fine-grained motion details and high-level activity patterns. Extensive experiments demonstrate that MAG-Res2Net outperforms existing methods, particularly for complex activities and in challenging real-world scenarios with noise and variability."
+  }
+];
 
--	`Liu, H.`^1^, Zhao, B.^1^, Dai, C., Sun, B., Li, A., & Wang, Z*. (2023). MAG-Res2Net: A novel deep learning network for human activity recognition. Physiological Measurement, 44(11), 115007.
-[[网页]](https://iopscience.iop.org/article/10.1088/1361-6579/ad0ab8/meta) [[预览]](https://iopscience.iop.org/article/10.1088/1361-6579/ad0ab8/pdf) [[下载]](/paper/PMEA2023.pdf)
+const PublicationDisplay = () => {
+  const [expandedPaper, setExpandedPaper] = useState(null);
+
+  // 可复用的组件
+  const PaperCard = ({ paper, isExpanded, toggleExpand }) => {
+    // 高亮自己的名字
+    const highlightName = (text) => {
+      return text.replace(/Liu, H\./g, '<strong>Liu, H.</strong>');
+    };
+    
+    return (
+      <div className="border rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow">
+        <div 
+          className="p-4 cursor-pointer flex justify-between items-start"
+          onClick={toggleExpand}
+        >
+          <div>
+            <p 
+              className="text-base" 
+              dangerouslySetInnerHTML={{ __html: highlightName(paper.citation) }}
+            />
+            <div className="mt-2 flex space-x-3">
+              <a 
+                href={paper.links.web} 
+                className="text-blue-600 hover:underline text-sm"
+                onClick={(e) => e.stopPropagation()}
+              >
+                [网页]
+              </a>
+              <a 
+                href={paper.links.preview} 
+                className="text-blue-600 hover:underline text-sm"
+                onClick={(e) => e.stopPropagation()}
+              >
+                [预览]
+              </a>
+              <a 
+                href={paper.links.download} 
+                className="text-blue-600 hover:underline text-sm"
+                onClick={(e) => e.stopPropagation()}
+              >
+                [下载]
+              </a>
+            </div>
+          </div>
+          <div className="text-gray-400">
+            {isExpanded ? (
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                <path fillRule="evenodd" d="M14.707 12.707a1 1 0 01-1.414 0L10 9.414l-3.293 3.293a1 1 0 01-1.414-1.414l4-4a1 1 0 011.414 0l4 4a1 1 0 010 1.414z" clipRule="evenodd" />
+              </svg>
+            ) : (
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                <path fillRule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clipRule="evenodd" />
+              </svg>
+            )}
+          </div>
+        </div>
+        
+        {isExpanded && (
+          <div className="px-4 py-3 bg-gray-50 border-t">
+            <h4 className="font-medium mb-2">论文简介</h4>
+            <p className="text-sm text-gray-700">{paper.description}</p>
+          </div>
+        )}
+      </div>
+    );
+  };
+
+  const togglePaper = (id) => {
+    if (expandedPaper === id) {
+      setExpandedPaper(null);
+    } else {
+      setExpandedPaper(id);
+    }
+  };
+
+  return (
+    <div className="w-full">
+      <h3 className="text-xl font-bold mb-4">已发表论文</h3>
+      <div className="space-y-4">
+        {papersData.map((paper) => (
+          <PaperCard 
+            key={paper.id}
+            paper={paper}
+            isExpanded={expandedPaper === paper.id}
+            toggleExpand={() => togglePaper(paper.id)}
+          />
+        ))}
+      </div>
+    </div>
+  );
+};
+
+export default PublicationDisplay;
 
 ---
 ### 在投论文
