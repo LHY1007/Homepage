@@ -1,8 +1,7 @@
 ---
-layout: default
+layout: subpage
 permalink: /my-papers/
 title: "我的论文集"
-author_profile: true
 ---
 
 <style>
