@@ -383,16 +383,7 @@ title: "领域解读"
     </div>
   </div>
   
-  <!-- 可视化部分 -->
-  <div class="visualization">
-    <h3>领域研究热点可视化</h3>
-    <p>下图展示了近五年AI、医学影像和人体活动识别领域的研究热点变化趋势</p>
-    <div class="visualization-placeholder">
-      <p>研究热点趋势图 - 点击交互</p>
-    </div>
-    <p><small>数据来源：基于Google Scholar和Web of Science论文分析</small></p>
-    </div> <!-- 结束可视化部分 -->
-    
+
     </div> <!-- 结束右侧内容区域 -->
   </div> <!-- 结束两列布局 -->
 </div>
