@@ -10,14 +10,31 @@ title: "我的论文集"
     padding: 20px 0;
   }
   
+  /* 布局容器 */
+  .two-column-layout {
+    display: flex;
+    gap: 30px;
+    margin-top: 20px;
+  }
+  
+  /* 左侧导航区域 */
+  .sidebar {
+    width: 250px;
+    flex-shrink: 0;
+  }
+  
+  /* 右侧内容区域 */
+  .main-content {
+    flex: 1;
+  }
+  
   /* 导航和目录样式 */
   .papers-nav {
-    position: sticky;
-    top: 20px;
     background-color: #f5f5f5;
     padding: 15px;
     border-radius: 8px;
-    margin-bottom: 30px;
+    position: sticky;
+    top: 20px;
   }
   
   .papers-nav ul {
@@ -37,6 +54,23 @@ title: "我的论文集"
   
   .papers-nav a:hover {
     color: #0074D9;
+  }
+  
+  /* 响应式布局 */
+  @media (max-width: 992px) {
+    .two-column-layout {
+      flex-direction: column;
+    }
+    
+    .sidebar {
+      width: 100%;
+      margin-bottom: 20px;
+    }
+    
+    .papers-nav {
+      position: relative;
+      top: 0;
+    }
   }
   
   /* 论文卡片样式 */
@@ -146,26 +180,34 @@ title: "我的论文集"
 <div class="papers-container">
   <h1>我的论文集</h1>
   
-  <!-- 过滤和搜索栏 -->
-  <div class="filter-container">
-    <input type="text" class="search-box" id="paperSearch" placeholder="搜索论文标题或关键词...">
-    <button class="filter-button active" data-category="all">全部</button>
-    <button class="filter-button" data-category="published">已发表</button>
-    <button class="filter-button" data-category="preprint">预印本</button>
-    <button class="filter-button" data-category="har">人体活动识别</button>
-    <button class="filter-button" data-category="medical">医学影像</button>
-    <button class="filter-button" data-category="neuroscience">神经科学</button>
-  </div>
-  
-  <!-- 导航和目录 -->
-  <div class="papers-nav">
-    <h3>目录</h3>
-    <ul>
-      <li><a href="#published-papers">已发表论文</a></li>
-      <li><a href="#preprints">预印本和在投论文</a></li>
-      <li><a href="#patents">专利与软件著作权</a></li>
-    </ul>
-  </div>
+  <!-- 两列布局开始 -->
+  <div class="two-column-layout">
+    
+    <!-- 左侧导航栏 -->
+    <div class="sidebar">
+      <div class="papers-nav">
+        <h3>目录</h3>
+        <ul>
+          <li><a href="#published-papers">已发表论文</a></li>
+          <li><a href="#preprints">预印本和在投论文</a></li>
+          <li><a href="#patents">专利与软件著作权</a></li>
+        </ul>
+      </div>
+    </div>
+    
+    <!-- 右侧内容区域 -->
+    <div class="main-content">
+      
+      <!-- 过滤和搜索栏 -->
+      <div class="filter-container">
+        <input type="text" class="search-box" id="paperSearch" placeholder="搜索论文标题或关键词...">
+        <button class="filter-button active" data-category="all">全部</button>
+        <button class="filter-button" data-category="published">已发表</button>
+        <button class="filter-button" data-category="preprint">预印本</button>
+        <button class="filter-button" data-category="har">人体活动识别</button>
+        <button class="filter-button" data-category="medical">医学影像</button>
+        <button class="filter-button" data-category="neuroscience">神经科学</button>
+      </div>
   
   <!-- 已发表论文 -->
   <section id="published-papers">
@@ -303,6 +345,9 @@ title: "我的论文集"
       <button class="toggle-abstract">显示摘要</button>
     </div>
   </section>
+    
+    </div> <!-- 结束右侧内容区域 -->
+  </div> <!-- 结束两列布局 -->
 </div>
 
 <script>
