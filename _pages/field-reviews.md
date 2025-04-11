@@ -252,6 +252,15 @@ title: "领域解读"
           <span class="tag" data-tag="neuroscience">神经科学</span>
           <span class="tag" data-tag="federated">联邦学习</span>
         </div>
+        
+        <!-- 添加目录导航 -->
+        <h3 style="margin-top: 20px;">快速导航</h3>
+        <ul style="list-style-type: none; padding-left: 0;">
+          <li><a href="#ai-section">人工智能解读</a></li>
+          <li><a href="#medical-section">医学影像解读</a></li>
+          <li><a href="#har-section">人体活动识别解读</a></li>
+          <li><a href="#neuro-section">神经科学解读</a></li>
+        </ul>
       </div>
     </div>
     
@@ -277,6 +286,10 @@ title: "领域解读"
   
   <!-- 论文解读列表 -->
   <div class="reviews-list">
+    <!-- AI部分 -->
+    <div id="ai-section">
+      <h2>人工智能解读</h2>
+    
     <!-- 解读卡片1 -->
     <div class="review-card" data-category="ai" data-tags="transformer attention">
       <div class="review-header">
@@ -297,6 +310,11 @@ title: "领域解读"
       <img src="/images/placeholder-vit.jpg" alt="Vision Transformer示意图" class="review-image">
       <a href="/reviews/vision-transformer/" class="review-link">阅读完整解读</a>
     </div>
+    </div>
+    
+    <!-- 医学影像部分 -->
+    <div id="medical-section">
+      <h2>医学影像解读</h2>
     
     <!-- 解读卡片2 -->
     <div class="review-card" data-category="medical" data-tags="diffusion mri">
@@ -318,6 +336,11 @@ title: "领域解读"
       <img src="/images/placeholder-medical.jpg" alt="医学影像分割示例" class="review-image">
       <a href="/reviews/diffusion-medical-segmentation/" class="review-link">阅读完整解读</a>
     </div>
+    </div>
+    
+    <!-- 人体活动识别部分 -->
+    <div id="har-section">
+      <h2>人体活动识别解读</h2>
     
     <!-- 解读卡片3 -->
     <div class="review-card" data-category="har" data-tags="attention sensor time-series">
@@ -339,6 +362,11 @@ title: "领域解读"
       <img src="/images/placeholder-har.jpg" alt="人体活动识别示意图" class="review-image">
       <a href="/reviews/multimodal-fusion-har/" class="review-link">阅读完整解读</a>
     </div>
+    </div>
+    
+    <!-- 神经科学部分 -->
+    <div id="neuro-section">
+      <h2>神经科学解读</h2>
     
     <!-- 解读卡片4 -->
     <div class="review-card" data-category="neuro" data-tags="neuroscience mri">
@@ -383,16 +411,33 @@ title: "领域解读"
     </div>
   </div>
   
-
+    
     </div> <!-- 结束右侧内容区域 -->
   </div> <!-- 结束两列布局 -->
-</div>
+</div> <!-- 结束reviews-container -->
 
 <script>
 document.addEventListener('DOMContentLoaded', function() {
   // 标签筛选功能
   const tags = document.querySelectorAll('.tag');
   const reviewCards = document.querySelectorAll('.review-card');
+  
+  // 目录平滑滚动功能（如果添加了目录）
+  document.querySelectorAll('.reviews-nav a').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+      e.preventDefault();
+      
+      const targetId = this.getAttribute('href').substring(1);
+      const targetElement = document.getElementById(targetId);
+      
+      if (targetElement) {
+        window.scrollTo({
+          top: targetElement.offsetTop - 20,
+          behavior: 'smooth'
+        });
+      }
+    });
+  });
   
   tags.forEach(tag => {
     tag.addEventListener('click', function() {
