@@ -1,0 +1,79 @@
+---
+layout: compress
+---
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    {% include head.html %}
+    {% include head/custom.html %}
+    <!-- 添加返回主页的样式 -->
+    <style>
+      .back-to-home {
+        position: fixed;
+        top: 20px;
+        left: 20px;
+        z-index: 1000;
+        padding: 8px 15px;
+        background-color: #0074D9;
+        color: white;
+        text-decoration: none;
+        border-radius: 5px;
+        font-weight: bold;
+        transition: background-color 0.3s;
+        display: flex;
+        align-items: center;
+        gap: 5px;
+      }
+      
+      .back-to-home:hover {
+        background-color: #0063b1;
+      }
+      
+      .page-content {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 70px 20px 20px;
+      }
+      
+      @media (max-width: 768px) {
+        .back-to-home {
+          padding: 6px 12px;
+          font-size: 0.9em;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    {% include browser-upgrade.html %}
+    
+    <!-- 添加返回主页的按钮 -->
+    <a href="/" class="back-to-home" target="_self">
+      <i class="fas fa-arrow-left"></i> 返回主页
+    </a>
+    
+    <div class="page-content" role="main">
+      <article class="page" itemscope itemtype="http://schema.org/CreativeWork">
+        {% if page.title %}<meta itemprop="headline" content="{{ page.title | markdownify | strip_html | strip_newlines | escape_once }}">{% endif %}
+        <div class="page__inner-wrap">
+          <section class="page__content" itemprop="text">
+            {{ content }}
+          </section>
+        </div>
+      </article>
+    </div>
+
+    {% include scripts.html %}
+
+    <div class="footer_site">
+      <hr/>
+      <div class="footer_copyright">
+        © 2025 Hanyu · Hanyu
+        <a class="page_a" href="https://lhy1007.github.io/">
+          acad
+        </a>&nbsp模板
+      </div>
+    </div>
+  </body>
+</html>
