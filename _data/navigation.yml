@@ -17,3 +17,9 @@ main:
 
   - title: "学术会议"
     url: "/#-xshy"
+
+  - title: "我的论文"
+    url: "/my-papers/"
+    
+  - title: "领域解读"
+    url: "/field-reviews/"
